@@ -1,5 +1,5 @@
 
-const DEADLINE = new Date("2026-04-13T23:59:00");
+const DEADLINE = new Date("2026-04-16T23:59:00");
 
 function updateTaskCard() {
   const now = new Date();
