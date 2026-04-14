@@ -1,4 +1,3 @@
-
 const DEADLINE = new Date("2026-04-16T23:59:00");
 
 function updateTaskCard() {
@@ -45,7 +44,7 @@ function updateTaskCard() {
 
   // 3. Status Display Update
   if (isCompleted) {
-    statusEl.textContent = "Completed";
+    statusEl.textContent = "Done";
     statusEl.style.color = "var(--success)";
   } else {
     statusEl.textContent = diff > 0 ? "In Progress" : "Overdue";
@@ -70,3 +69,17 @@ if (todoToggle) {
 // Refresh loop (every 30 seconds)
 updateTaskCard();
 setInterval(updateTaskCard, 30000);
+
+const deleteButtons = document.querySelectorAll("button.delete");
+deleteButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    window.alert("Delete button clicked");
+  });
+});
+
+const editButtons = document.querySelectorAll("button.edit");
+editButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    window.alert("Edit button clicked");
+  });
+});

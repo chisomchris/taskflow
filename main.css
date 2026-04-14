@@ -103,13 +103,13 @@ body {
 }
 
 .container {
-  flex: 1; /* Takes up all available space */
-  max-width: 500px;
-  margin: 60px auto;
-  padding: 0 20px;
+  flex: 1;
+  margin-top: 2rem;
 }
 
 .todo-card {
+  max-width: 500px;
+  margin-inline: auto;
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -229,8 +229,8 @@ h2 {
   color: var(--danger);
   background: #fef2f2;
 }
-.checkbox-wrapper{
-  padding-top: .25rem;
+.checkbox-wrapper {
+  padding-top: 0.25rem;
 }
 /* Footer Styling */
 .app-footer {
