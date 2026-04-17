@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TaskFlow</title>
+    <title>TaskFlow | Stage 0</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
       rel="stylesheet"
@@ -17,19 +17,16 @@
           <div class="logo-icon"></div>
           <h1>TaskFlow</h1>
         </div>
-
         <div class="header-meta">
-          <div class="user-profile">
-            <div class="avatar">CE</div>
-          </div>
+          <div class="avatar">CE</div>
         </div>
       </div>
     </header>
 
     <main class="container">
       <div class="wrapper">
-        <article class="todo-card" data-testid="test-todo-card">
-          <div class="card-layout">
+        <article class="todo-card" id="todo-card" data-testid="test-todo-card">
+          <div class="card-layout" data-testid="test-todo-edit-form">
             <div class="checkbox-wrapper">
               <input
                 type="checkbox"
@@ -43,50 +40,166 @@
 
             <div class="card-content">
               <div class="card-header">
-                <h2 data-testid="test-todo-title">
-                  Complete all stage 0 tasks
-                </h2>
-                <span
-                  class="priority-badge high"
-                  data-testid="test-todo-priority"
-                  aria-label="task priority"
-                  >High</span
+                <div class="title-area">
+                  <h2 id="view-title" data-testid="test-todo-title">
+                    Complete all stage 0 tasks
+                  </h2>
+                  <input
+                    type="text"
+                    id="edit-title"
+                    class="edit-input"
+                    style="display: none"
+                    data-testid="test-todo-edit-title-input"
+                  />
+                </div>
+                <div
+                  class="priority-area"
+                  data-testid="test-todo-priority-indicator"
                 >
+                  <span
+                    id="view-priority"
+                    class="priority-badge high"
+                    data-testid="test-todo-priority"
+                    >High</span
+                  >
+                  <select
+                    id="edit-priority"
+                    class="edit-select"
+                    style="display: none"
+                    data-testid="test-todo-edit-priority-select"
+                  >
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
               </div>
 
-              <p class="description" data-testid="test-todo-description">
-                Build a high-fidelity Task Card component using Vanilla HTML,
-                CSS, and JS. Create an API that classifies a given name into a
-                gender. Explore given Dataset to drive reasonable insights
-              </p>
+              <div class="description-area">
+                <div
+                  id="desc-container"
+                  class="description-container collapsed"
+                  data-testid="test-todo-collapsible-section"
+                >
+                  <p
+                    id="view-description"
+                    class="description"
+                    data-testid="test-todo-description"
+                  >
+                    Build a high-fidelity Task Card component using Vanilla
+                    HTML, CSS, and JS. Ensure that the design is responsive and
+                    accessible. All Stage 0 tasks must be verified before moving
+                    to the next phase. This description is long enough to
+                    trigger the five-line limit and test the expand/collapse
+                    functionality.
+                  </p>
+                </div>
+                <button
+                  id="desc-toggle"
+                  class="text-toggle-btn"
+                  style="display: none"
+                  data-testid="test-todo-expand-toggle"
+                >
+                  Show More
+                </button>
+                <textarea
+                  id="edit-description"
+                  class="edit-textarea"
+                  style="display: none"
+                  data-testid="test-todo-edit-description-input"
+                ></textarea>
+              </div>
 
-              <ul class="tags-list" data-testid="test-todo-tags" role="list">
-                <li data-testid="test-todo-tag-frontend">Frontend</li>
-                <li data-testid="test-todo-tag-backend">Backend</li>
-                <li data-testid="test-todo-tag-data_analysis">Data Analysis</li>
-              </ul>
+              <div class="tags-area">
+                <ul
+                  id="view-tags"
+                  class="tags-list"
+                  data-testid="test-todo-tags"
+                >
+                  <li data-testid="test-todo-tag-frontend">Frontend</li>
+                  <li data-testid="test-todo-tag-hng12">HNG12</li>
+                </ul>
+                <input
+                  type="text"
+                  id="edit-tags"
+                  class="edit-input"
+                  placeholder="Tags (comma separated)"
+                  style="display: none"
+                />
+              </div>
 
-              <div class="card-footer">
-                <div class="date-info">
+              <div class="date-info">
+                <div class="time-box">
+                  <span
+                    id="status-dot"
+                    class="status-dot"
+                    data-testid="test-todo-overdue-indicator"
+                  ></span>
                   <time
                     id="time-remaining"
                     data-testid="test-todo-time-remaining"
                     class="countdown"
                   ></time>
-                  <time
-                    id="due-date-display"
-                    data-testid="test-todo-due-date"
-                  ></time>
                 </div>
+                <time
+                  id="view-due-date"
+                  data-testid="test-todo-due-date"
+                ></time>
+                <input
+                  type="datetime-local"
+                  id="edit-due-date"
+                  class="edit-input"
+                  style="display: none"
+                  data-testid="test-todo-edit-due-date-input"
+                />
+              </div>
+
+              <div class="card-footer">
                 <div class="card-meta">
-                  <span class="status-indicator" data-testid="test-todo-status">
-                    In Progress
-                  </span>
+                  <div class="status-box">
+                    <span
+                      id="view-status"
+                      class="status-indicator"
+                      data-testid="test-todo-status"
+                      >In Progress</span
+                    >
+                    <select
+                      id="edit-status"
+                      class="edit-select status-control"
+                      style="display: none"
+                      data-testid="test-todo-status-control"
+                    >
+                      <option value="Pending">Pending</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Done">Done</option>
+                    </select>
+                  </div>
+
                   <div class="card-actions">
                     <button
+                      id="cancel-btn"
+                      class="icon-btn cancel"
+                      style="display: none"
+                      data-testid="test-todo-cancel-button"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                    </button>
+                    <button
+                      id="edit-btn"
                       class="icon-btn edit"
                       data-testid="test-todo-edit-button"
-                      aria-label="Edit task"
                     >
                       <svg
                         width="18"
@@ -109,7 +222,6 @@
                     <button
                       class="icon-btn delete"
                       data-testid="test-todo-delete-button"
-                      aria-label="Delete task"
                     >
                       <svg
                         width="18"
